@@ -1,0 +1,14 @@
+created:
+    - database/factories/CountryFactory.php
+    - database/factories/PostFactory.php
+    - database/migrations/2024_01_16_180017_create_countries_table.php
+    - database/migrations/2024_01_16_180018_create_posts_table.php
+    - app/Models/Country.php
+    - app/Models/Post.php
+    - database/seeders/CountrySeeder.php
+    - database/seeders/UserSeeder.php
+    - database/seeders/PostSeeder.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable' }
+    Country: { name: string, timestamps: timestamps, hasMany: User }
+    Post: { user_id: 'id:user', name: string, timestamps: timestamps }

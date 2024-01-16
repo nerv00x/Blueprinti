@@ -1,0 +1,32 @@
+models:
+  Country:
+    name: string
+    timestamps: true
+    hasMany: User
+
+  Post:
+    user_id: id:user
+    name: string
+    timestamps: true
+
+seeders: Country, User, Post
+
+factories:
+  Country:
+    name: $faker->country
+  User:
+    country_id: factory|Country
+    name: $faker->name
+    email: $faker->unique()->safeEmail
+  Post:
+    user_id: factory|User
+    title: $faker->sentence
+    body: $faker->paragraph
+
+relationships:
+  Country:
+    posts: hasManyThrough|Post,User
+
+
+controllers:
+  # ...
